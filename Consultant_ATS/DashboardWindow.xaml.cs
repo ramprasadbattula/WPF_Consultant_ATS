@@ -1,19 +1,7 @@
 ﻿using Consultant_ATS.Models;
-using Consultant_ATS.ViewModels;
 using Consultant_ATS.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Consultant_ATS.ViewModels;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Consultant_ATS
 {
@@ -30,7 +18,7 @@ namespace Consultant_ATS
             InitializeComponent();
             _loggedInUser = user;
             DataContext = new DashboardWindowViewModel(_loggedInUser);
-            
+
             _databaseService = new DatabaseService();
         }
 

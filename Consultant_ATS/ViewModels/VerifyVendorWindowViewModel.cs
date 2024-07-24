@@ -1,12 +1,7 @@
-﻿using System;
-using Consultant_ATS.Commands;
-using System.Windows.Input;
+﻿using Consultant_ATS.Commands;
 using Consultant_ATS.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Consultant_ATS.ViewModels
 {

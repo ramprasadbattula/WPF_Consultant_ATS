@@ -1,14 +1,8 @@
-﻿using Consultant_ATS.Models;
-using Consultant_ATS.Commands;
-using Consultant_ATS.ViewModels;
+﻿using Consultant_ATS.Commands;
+using Consultant_ATS.Models;
 using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Consultant_ATS.ViewModels
 {

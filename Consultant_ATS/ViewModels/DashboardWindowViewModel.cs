@@ -1,11 +1,6 @@
-﻿using System;
-using Consultant_ATS.Commands;
-using System.Windows.Input;
+﻿using Consultant_ATS.Commands;
 using Consultant_ATS.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Consultant_ATS.ViewModels
 {
@@ -35,7 +30,7 @@ namespace Consultant_ATS.ViewModels
         private void SeeAllSubmissions(object obj)
         {
             // Navigate to see all submissions
-           
+
         }
 
         private void VerifyVendor(object obj)

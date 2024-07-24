@@ -1,23 +1,12 @@
-﻿using System;
+﻿using Consultant_ATS.Models;
 using Consultant_ATS.Services;
-using Consultant_ATS.Models;
 using Consultant_ATS.ViewModels;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Consultant_ATS
 {
-   
+
     public partial class SignupWindow : Window
     {
         private DatabaseService _databaseService;
