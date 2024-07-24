@@ -100,7 +100,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20,30,20,0">
-                <Button Style="{StaticResource ButtonStyle}" Content="Login" Click="LoginButton_Click"/>
+                <Button Style="{StaticResource ButtonStyle}" Content="Login" Click="LoginButton_Click" Background="#FF7717E0"/>
                 <Button Style="{StaticResource ButtonStyle}" Content="Signup" Click="SignupButton_Click"/>
             </StackPanel>
         </StackPanel>

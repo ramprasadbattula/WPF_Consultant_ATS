@@ -27,14 +27,14 @@ namespace Consultant_ATS
         {
             var loginWindow = new LoginWindow();
             loginWindow.Show();
-            Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive)?.Close();
+            this.Close();
         }
 
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
             var signupWindow = new SignupWindow();
             signupWindow.Show();
-            Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive)?.Close();
+            this.Close();
         }
 
     }
