@@ -1,0 +1,77 @@
+﻿<Window x:Class="Consultant_ATS.AddSubmissionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Consultant_ATS"
+        mc:Ignorable="d"
+        Title="AddSubmissionWindow" Height="450" Width="800">
+    <Grid>
+        <!-- Client Name -->
+        <Grid Margin="10,10,10,0">
+            <TextBox Name="ClientNameTextBox" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Text="Client Name" IsHitTestVisible="False" Foreground="Gray" VerticalAlignment="Center"
+                       Margin="5,0,0,0" FontStyle="Italic"
+			Visibility="{Binding Text.Length, ElementName=ClientNameTextBox, Converter={StaticResource EmptyStringToVisibilityConverter}}"/>
+
+		</Grid>
+
+        <!-- Vendor Name -->
+        <Grid Margin="10,50,10,0">
+            <TextBox Name="VendorNameTextBox" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Text="Vendor Name" IsHitTestVisible="False" Foreground="Gray" VerticalAlignment="Center"
+                       Margin="5,0,0,0" FontStyle="Italic"
+                       Visibility="{Binding Text.Length, ElementName=VendorNameTextBox, Converter={StaticResource EmptyStringToVisibilityConverter}}"/>
+        </Grid>
+
+        <!-- Vendor Company -->
+        <Grid Margin="10,90,10,0">
+            <TextBox Name="VendorCompanyTextBox" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Text="Vendor Company" IsHitTestVisible="False" Foreground="Gray" VerticalAlignment="Center"
+                       Margin="5,0,0,0" FontStyle="Italic"
+                       Visibility="{Binding Text.Length, ElementName=VendorCompanyTextBox, Converter={StaticResource EmptyStringToVisibilityConverter}}"/>
+        </Grid>
+
+        <!-- Vendor Email -->
+        <Grid Margin="10,130,10,0">
+            <TextBox Name="VendorEmailTextBox" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Text="Vendor Email" IsHitTestVisible="False" Foreground="Gray" VerticalAlignment="Center"
+                       Margin="5,0,0,0" FontStyle="Italic"
+                       Visibility="{Binding Text.Length, ElementName=VendorEmailTextBox, Converter={StaticResource EmptyStringToVisibilityConverter}}"/>
+        </Grid>
+
+        <!-- Vendor Phone -->
+        <Grid Margin="10,170,10,0">
+            <TextBox Name="VendorPhoneTextBox" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Text="Vendor Phone" IsHitTestVisible="False" Foreground="Gray" VerticalAlignment="Center"
+                       Margin="5,0,0,0" FontStyle="Italic"
+                       Visibility="{Binding Text.Length, ElementName=VendorPhoneTextBox, Converter={StaticResource EmptyStringToVisibilityConverter}}"/>
+        </Grid>
+
+        <!-- Pay Rate -->
+        <Grid Margin="10,210,10,0">
+            <TextBox Name="PayRateTextBox" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Text="Pay Rate" IsHitTestVisible="False" Foreground="Gray" VerticalAlignment="Center"
+                       Margin="5,0,0,0" FontStyle="Italic"
+                       Visibility="{Binding Text.Length, ElementName=PayRateTextBox, Converter={StaticResource EmptyStringToVisibilityConverter}}"/>
+        </Grid>
+
+        <!-- Notes -->
+        <Grid Margin="10,250,10,0">
+            <TextBox Name="NotesTextBox" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Text="Notes" IsHitTestVisible="False" Foreground="Gray" VerticalAlignment="Center"
+                       Margin="5,0,0,0" FontStyle="Italic"
+                       Visibility="{Binding Text.Length, ElementName=NotesTextBox, Converter={StaticResource EmptyStringToVisibilityConverter}}"/>
+        </Grid>
+
+        <!-- Date -->
+        <Grid Margin="10,290,10,0">
+            <TextBox Name="DateTextBox" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Text="Date (YYYY-MM-DD)" IsHitTestVisible="False" Foreground="Gray" VerticalAlignment="Center"
+                       Margin="5,0,0,0" FontStyle="Italic"
+                       Visibility="{Binding Text.Length, ElementName=DateTextBox, Converter={StaticResource EmptyStringToVisibilityConverter}}"/>
+        </Grid>
+
+        <Button Content="Complete" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" Click="CompleteButton_Click"/>
+    </Grid>
+</Window>
