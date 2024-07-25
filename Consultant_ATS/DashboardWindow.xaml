@@ -84,9 +84,11 @@
         <StackPanel Grid.Row="1" Margin="20">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Style="{StaticResource ButtonStyle}" Content="Add Submission" Click="AddSubmissionButton_Click"/>
-                <Button Style="{StaticResource ButtonStyle}" Content="See All Submissions" Click="SeeAllSubmissionsButton_Click"/>
+                <Button Style="{StaticResource ButtonStyle}" Content="See All Submissions" Command="{Binding SeeAllSubmissionsCommand}"/>
                 <Button Style="{StaticResource ButtonStyle}" Content="Verify Vendor" Click="VerifyVendorButton_Click"/>
                 <Button Style="{StaticResource ButtonStyle}" Content="Update Submission Status" Click="UpdateSubmissionStatusButton_Click"/>
+                <Button Style="{StaticResource ButtonStyle}" Content="Logout" Click="LogoutButton_Click"/>
+               
             </StackPanel>
 
             <ListView x:Name="SubmissionsListView" Width="800" Height="300" Margin="20,20,0,0" Visibility="Collapsed">

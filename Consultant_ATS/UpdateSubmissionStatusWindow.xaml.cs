@@ -1,10 +1,10 @@
-﻿using Consultant_ATS.Services;
-using Consultant_ATS.ViewModels;
+﻿using Consultant_ATS.Models;
+using Consultant_ATS.Services;
+using System.Linq;
 using System.Windows;
 
 namespace Consultant_ATS
 {
-
     public partial class UpdateSubmissionStatusWindow : Window
     {
         private DatabaseService _databaseService;
@@ -12,7 +12,6 @@ namespace Consultant_ATS
         public UpdateSubmissionStatusWindow()
         {
             InitializeComponent();
-            DataContext = new UpdateSubmissionStatusWindowViewModel();
             _databaseService = new DatabaseService();
         }
 
@@ -21,18 +20,24 @@ namespace Consultant_ATS
             var vendorEmail = VendorEmailTextBox.Text;
             var status = StatusTextBox.Text;
 
-            var submission = _databaseService.GetSubmissionByVendorEmail(vendorEmail);
+            // Fetch submissions by vendor email
+            var submissions = _databaseService.GetSubmissionsByVendorEmail(vendorEmail);
 
-            if (submission != null)
+            if (submissions.Any())
             {
-                submission.Status = status;
-                _databaseService.UpdateSubmission(submission);
-                MessageBox.Show("Submission status updated successfully.");
+                // Update each submission's status
+                foreach (var submission in submissions)
+                {
+                    submission.Status = status;
+                    _databaseService.UpdateSubmission(submission);
+                }
+
+                MessageBox.Show("Submission statuses updated successfully.");
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Submission not found for the specified vendor email.");
+                MessageBox.Show("No submissions found for the specified vendor email.");
             }
         }
     }

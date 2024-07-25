@@ -1,21 +1,25 @@
 ﻿using Consultant_ATS.Commands;
 using Consultant_ATS.Models;
+using Consultant_ATS.Services;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Consultant_ATS.ViewModels
 {
     public class VerifyVendorWindowViewModel : BaseViewModel
     {
-        private string _vendorDomain;
+        private string _vendorCompany;
         private ObservableCollection<Submission> _results;
+        private DatabaseService _databaseService;
+        private User _loggedInUser;
 
-        public string VendorDomain
+        public string VendorCompany
         {
-            get => _vendorDomain;
+            get => _vendorCompany;
             set
             {
-                _vendorDomain = value;
+                _vendorCompany = value;
                 OnPropertyChanged();
             }
         }
@@ -32,15 +36,29 @@ namespace Consultant_ATS.ViewModels
 
         public ICommand VerifyCommand { get; }
 
-        public VerifyVendorWindowViewModel()
+        public VerifyVendorWindowViewModel(User loggedInUser)
         {
+            _loggedInUser = loggedInUser;
+            _databaseService = new DatabaseService();
             Results = new ObservableCollection<Submission>();
             VerifyCommand = new RelayCommand(Verify);
         }
 
         private void Verify(object obj)
         {
-            // Implement verification logic
+            var submissions = _databaseService.GetSubmissionsByVendorCompany(_loggedInUser.Id.ToString(), _vendorCompany);
+            Results.Clear();
+            foreach (var submission in submissions)
+            {
+                Results.Add(submission);
+            }
+
+            if (submissions.Count == 0)
+            {
+                // Notify the user that no submissions were found
+                MessageBox.Show("No submissions found for the specified vendor company.");
+            }
         }
+
     }
 }

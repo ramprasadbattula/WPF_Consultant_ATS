@@ -1,37 +1,36 @@
-﻿using Consultant_ATS.Services;
+﻿using Consultant_ATS.Models;
+using Consultant_ATS.Services;
 using Consultant_ATS.ViewModels;
+using System.Linq;
 using System.Windows;
 
 namespace Consultant_ATS
 {
-    /// <summary>
-    /// Interaction logic for VerifyVendorWindow.xaml
-    /// </summary>
-
     public partial class VerifyVendorWindow : Window
     {
-        private DatabaseService _databaseService;
+        private VerifyVendorWindowViewModel _viewModel;
 
-        public VerifyVendorWindow()
+        public VerifyVendorWindow(User loggedInUser)
         {
             InitializeComponent();
-            DataContext = new VerifyVendorWindowViewModel();
-            _databaseService = new DatabaseService();
+            _viewModel = new VerifyVendorWindowViewModel(loggedInUser);
+            DataContext = _viewModel;
         }
 
         private void VerifyButton_Click(object sender, RoutedEventArgs e)
         {
-            var domain = VendorDomainTextBox.Text;
-            var submission = _databaseService.GetSubmissionByVendorDomain(domain);
+            _viewModel.VendorCompany = VendorCompanyTextBox.Text;
+            _viewModel.VerifyCommand.Execute(null);
 
-            if (submission != null)
+            var results = _viewModel.Results;
+            if (results.Any())
             {
-                VerificationResultsListView.ItemsSource = new[] { submission };
+                VerificationResultsListView.ItemsSource = results;
                 VerificationResultsListView.Visibility = Visibility.Visible;
             }
             else
             {
-                MessageBox.Show("No submissions found for the specified vendor domain.");
+                MessageBox.Show("No submissions found for the specified vendor company.");
             }
         }
     }

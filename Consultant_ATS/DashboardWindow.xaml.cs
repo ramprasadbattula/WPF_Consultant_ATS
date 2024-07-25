@@ -37,14 +37,22 @@ namespace Consultant_ATS
 
         private void VerifyVendorButton_Click(object sender, RoutedEventArgs e)
         {
-            VerifyVendorWindow verifyVendorWindow = new VerifyVendorWindow();
+            var verifyVendorWindow = new VerifyVendorWindow(_loggedInUser);
             verifyVendorWindow.Show();
         }
+
 
         private void UpdateSubmissionStatusButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateSubmissionStatusWindow updateSubmissionStatusWindow = new UpdateSubmissionStatusWindow();
             updateSubmissionStatusWindow.Show();
         }
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+       
     }
 }
