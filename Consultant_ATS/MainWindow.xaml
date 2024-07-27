@@ -1,29 +1,16 @@
 ﻿<Window x:Class="Consultant_ATS.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:Consultant_ATS"
-        Title="Consultant_ATS" Height="450" Width="800">
+        Title="Job Application Tracker" Height="450" Width="800">
     <Window.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Roboto" />
-        </Style>
-
-        <Style x:Key="HeaderText" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="36" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="Foreground" Value="#333" />
-        </Style>
-
-        <Style x:Key="TaglineText" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontStyle" Value="Italic" />
-            <Setter Property="Foreground" Value="#666" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
         </Style>
 
         <Style x:Key="SectionHeader" TargetType="TextBlock">
             <Setter Property="FontSize" Value="24" />
             <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="Foreground" Value="#444" />
+            <Setter Property="Foreground" Value="#34495E" />
         </Style>
 
         <Style x:Key="ListText" TargetType="TextBlock">
@@ -32,15 +19,14 @@
         </Style>
 
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="100" />
+            <Setter Property="Width" Value="120" />
             <Setter Property="Height" Value="40" />
             <Setter Property="Margin" Value="10" />
-            <Setter Property="Background" Value="#6a11cb" />
+            <Setter Property="Background" Value="#3498DB" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="BorderBrush" Value="Transparent" />
-           
             <Setter Property="Padding" Value="1 2" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -54,8 +40,7 @@
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" 
                                 BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                >
+                                BorderThickness="{TemplateBinding BorderThickness}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -63,7 +48,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#2575fc" />
+                    <Setter Property="Background" Value="#2980B9" />
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter Property="RenderTransform">
@@ -74,35 +59,81 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
     </Window.Resources>
 
-    <Grid Background="AliceBlue" Margin="-541,0,-479,-418">
+    <Grid Background="#ECF0F1">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="10">
-            <TextBlock Style="{StaticResource HeaderText}" Text="Consultant_ATS" />
-            <TextBlock Style="{StaticResource TaglineText}" Text="Makes your application tracking easy" Margin="0,10,0,20"/>
+            <TextBlock Style="{StaticResource SectionHeader}" Text="Job Application Tracker" />
+            <TextBlock Style="{StaticResource ListText}" Text="Makes your application tracking easy" Margin="0,10,0,20"/>
         </StackPanel>
 
-        <StackPanel Background="MintCream" Grid.Row="1" Margin="20">
-            <TextBlock Style="{StaticResource SectionHeader}" Text="How It Works" Margin="0,0,0,10"/>
-            <StackPanel Margin="10,0,0,0">
-                <TextBlock Style="{StaticResource ListText}" Text=" Login: Access your account with your email and password." />
-                <TextBlock Style="{StaticResource ListText}" Text=" Signup: Register as a new user with your details." />
-                <TextBlock Style="{StaticResource ListText}" Text=" Dashboard: Manage your submissions and track their status." />
-                <TextBlock Style="{StaticResource ListText}" Text=" Add Submission: Enter details of your submission to keep track of clients and vendors." />
-                <TextBlock Style="{StaticResource ListText}" Text=" Verify Vendor: Check if a vendor has already been submitted to avoid duplicates." />
-                <TextBlock Style="{StaticResource ListText}" Text=" Update Status: Keep the status of your submissions up-to-date." />
-            </StackPanel>
+        <ScrollViewer Grid.Row="1" Margin="20">
+            <UniformGrid Columns="3" Rows="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
+                <!-- Login Card -->
+                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Margin="10" Padding="10">
+                    <StackPanel>
+                        <Image Source="pack://application:,,,/Consultant_ATS;component/icons/login_icon.png" Width="48" Height="48" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                        <TextBlock Text="Login" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Access your account with your email and password." TextWrapping="Wrap" TextAlignment="Center"/>
+                    </StackPanel>
+                </Border>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20,30,20,0">
-                <Button Style="{StaticResource ButtonStyle}" Content="Login" Click="LoginButton_Click" Background="#FF7717E0"/>
-                <Button Style="{StaticResource ButtonStyle}" Content="Signup" Click="SignupButton_Click"/>
-            </StackPanel>
+                <!-- Signup Card -->
+                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Margin="10" Padding="10">
+                    <StackPanel>
+                        <Image Source="pack://application:,,,/Consultant_ATS;component/icons/signup_icon.png" Width="48" Height="48" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                        <TextBlock Text="Signup" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Register as a new user with your details." TextWrapping="Wrap" TextAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Dashboard Card -->
+                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Margin="10" Padding="10">
+                    <StackPanel>
+                        <Image Source="pack://application:,,,/Consultant_ATS;component/icons/dashboard_icon.png" Width="48" Height="48" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                        <TextBlock Text="Dashboard" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Manage your submissions and track their status." TextWrapping="Wrap" TextAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Add Submission Card -->
+                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Margin="10" Padding="10">
+                    <StackPanel>
+                        <Image Source="pack://application:,,,/Consultant_ATS;component/icons/add_submission_icon.png" Width="48" Height="48" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                        <TextBlock Text="Add Submission" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Enter details of your submission to keep track of clients and vendors." TextWrapping="Wrap" TextAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Verify Vendor Card -->
+                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Margin="10" Padding="10">
+                    <StackPanel>
+                        <Image Source="pack://application:,,,/Consultant_ATS;component/icons/verify_vendor_icon.png" Width="48" Height="48" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                        <TextBlock Text="Verify Vendor" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Check if a vendor has already been submitted to avoid duplicates." TextWrapping="Wrap" TextAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Update Status Card -->
+                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Margin="10" Padding="10">
+                    <StackPanel>
+                        <Image Source="pack://application:,,,/Consultant_ATS;component/icons/update_status_icon.png" Width="48" Height="48" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                        <TextBlock Text="Update Status" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Keep the status of your submissions up-to-date." TextWrapping="Wrap" TextAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20,10,20,10">
+            <Button Style="{StaticResource ButtonStyle}" Content="Login" Click="LoginButton_Click" Background="#E74C3C"/>
+            <Button Style="{StaticResource ButtonStyle}" Content="Signup" Click="SignupButton_Click"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -9,11 +9,33 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="icons\add_submission_icon.png" />
+    <None Remove="icons\dashboard_icon.png" />
+    <None Remove="icons\login_icon.png" />
+    <None Remove="icons\logout_icon.png" />
+    <None Remove="icons\see_all_icon.png" />
+    <None Remove="icons\signup_icon.png" />
+    <None Remove="icons\update_status_icon.png" />
+    <None Remove="icons\verify_vendor_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.28.0" />
 	  
 	  <PackageReference Include="MongoDB.Bson" Version="2.28.0" />
 	  
 	  <PackageReference Include="MongoDB.Driver.Core" Version="2.28.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icons\add_submission_icon.png" />
+    <Resource Include="icons\dashboard_icon.png" />
+    <Resource Include="icons\login_icon.png" />
+    <Resource Include="icons\logout_icon.png" />
+    <Resource Include="icons\see_all_icon.png" />
+    <Resource Include="icons\signup_icon.png" />
+    <Resource Include="icons\update_status_icon.png" />
+    <Resource Include="icons\verify_vendor_icon.png" />
   </ItemGroup>
 
 </Project>

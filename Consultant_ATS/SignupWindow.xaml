@@ -5,26 +5,52 @@
     <Window.Resources>
         <!-- Reusing Styles from MainWindow -->
         <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Roboto" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
         </Style>
 
         <Style x:Key="HeaderText" TargetType="TextBlock">
             <Setter Property="FontSize" Value="36" />
             <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="Foreground" Value="#333" />
+            <Setter Property="Foreground" Value="#2C3E50" />
         </Style>
 
-        <Style x:Key="TaglineText" TargetType="TextBlock">
+        <Style x:Key="SubHeaderText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="#2C3E50" />
+        </Style>
+
+        <Style x:Key="LabelText" TargetType="TextBlock">
             <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontStyle" Value="Italic" />
-            <Setter Property="Foreground" Value="#666" />
+            <Setter Property="Foreground" Value="#2C3E50" />
+            <Setter Property="Margin" Value="0,0,0,5" />
+        </Style>
+
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="Width" Value="300" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="0,0,0,15" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="BorderBrush" Value="#BDC3C7" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+
+        <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
+            <Setter Property="Width" Value="300" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="0,0,0,20" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="BorderBrush" Value="#BDC3C7" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="White" />
         </Style>
 
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="100" />
+            <Setter Property="Width" Value="120" />
             <Setter Property="Height" Value="40" />
             <Setter Property="Margin" Value="10" />
-            <Setter Property="Background" Value="#6a11cb" />
+            <Setter Property="Background" Value="#3498DB" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontWeight" Value="Bold" />
@@ -37,8 +63,7 @@
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" 
                                 BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                CornerRadius="20">
+                                BorderThickness="{TemplateBinding BorderThickness}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -51,7 +76,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#2575fc" />
+                    <Setter Property="Background" Value="#2980B9" />
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter Property="RenderTransform">
@@ -64,43 +89,38 @@
         </Style>
     </Window.Resources>
 
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                <GradientStop Color="#6a11cb" Offset="0" />
-                <GradientStop Color="#2575fc" Offset="1" />
-            </LinearGradientBrush>
-        </Grid.Background>
+    <ScrollViewer>
+        <Grid Background="#ECF0F1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="10">
-            <TextBlock Style="{StaticResource HeaderText}" Text="Sign Up" />
-            <TextBlock Style="{StaticResource TaglineText}" Text="Create your Consultant_ATS account" Margin="0,10,0,20"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Margin="20">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Name:" FontSize="18" Margin="0,10,0,5"/>
-                <TextBox x:Name="NameTextBox" Width="300" Height="30" Margin="0,0,0,10" />
-
-                <TextBlock Text="Email:" FontSize="18" Margin="0,10,0,5"/>
-                <TextBox x:Name="EmailTextBox" Width="300" Height="30" Margin="0,0,0,10" />
-
-                <TextBlock Text="Phone:" FontSize="18" Margin="0,10,0,5"/>
-                <TextBox x:Name="PhoneTextBox" Width="300" Height="30" Margin="0,0,0,10" />
-
-                <TextBlock Text="LinkedIn:" FontSize="18" Margin="0,10,0,5"/>
-                <TextBox x:Name="LinkedInTextBox" Width="300" Height="30" Margin="0,0,0,10" />
-
-                <TextBlock Text="Password:" FontSize="18" Margin="0,10,0,5"/>
-                <PasswordBox x:Name="PasswordBox" Width="300" Height="30" Margin="0,0,0,20" />
-
-                <Button Style="{StaticResource ButtonStyle}" Content="Sign Up" Click="SignupButton_Click"/>
+            <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="20">
+                <TextBlock Style="{StaticResource HeaderText}" Text="Sign Up" />
+                <TextBlock Style="{StaticResource SubHeaderText}" Text="Create your Consultant_ATS account" Margin="0,10,0,20"/>
             </StackPanel>
-        </StackPanel>
-    </Grid>
+
+            <StackPanel Grid.Row="1" Margin="20" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource LabelText}" Text="Name:" />
+                    <TextBox x:Name="NameTextBox" Style="{StaticResource TextBoxStyle}" />
+
+                    <TextBlock Style="{StaticResource LabelText}" Text="Email:" />
+                    <TextBox x:Name="EmailTextBox" Style="{StaticResource TextBoxStyle}" />
+
+                    <TextBlock Style="{StaticResource LabelText}" Text="Phone:" />
+                    <TextBox x:Name="PhoneTextBox" Style="{StaticResource TextBoxStyle}" />
+
+                    <TextBlock Style="{StaticResource LabelText}" Text="LinkedIn:" />
+                    <TextBox x:Name="LinkedInTextBox" Style="{StaticResource TextBoxStyle}" />
+
+                    <TextBlock Style="{StaticResource LabelText}" Text="Password:" Margin="0,20,0,5"/>
+                    <PasswordBox x:Name="PasswordBox" Style="{StaticResource PasswordBoxStyle}" />
+
+                    <Button Style="{StaticResource ButtonStyle}" Content="Sign Up" Click="SignupButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Window>
