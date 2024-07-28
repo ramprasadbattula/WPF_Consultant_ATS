@@ -31,8 +31,8 @@ namespace Consultant_ATS
         private void SeeAllSubmissionsButton_Click(object sender, RoutedEventArgs e)
         {
             var submissions = _databaseService.GetSubmissions(_loggedInUser.Id.ToString());
-            SubmissionsListView.ItemsSource = submissions;
-            SubmissionsListView.Visibility = Visibility.Visible;
+           /* SubmissionsListView.ItemsSource = submissions;
+            SubmissionsListView.Visibility = Visibility.Visible;*/
         }
 
         private void VerifyVendorButton_Click(object sender, RoutedEventArgs e)
