@@ -4,7 +4,7 @@
         Title="Dashboard - Consultant_ATS" Height="600" Width="1000">
     <Window.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Roboto" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
         </Style>
 
         <Style x:Key="HeaderText" TargetType="TextBlock">
@@ -23,7 +23,7 @@
             <Setter Property="Width" Value="150" />
             <Setter Property="Height" Value="40" />
             <Setter Property="Margin" Value="10" />
-            <Setter Property="Background" Value="#6a11cb" />
+            <Setter Property="Background" Value="#3498DB" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontWeight" Value="Bold" />
@@ -61,13 +61,22 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="BorderBrush" Value="#3498DB" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="Padding" Value="20" />
+        </Style>
     </Window.Resources>
 
-    <Grid>
-
+    <Grid Background="#ECF0F1">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="10">
@@ -75,19 +84,47 @@
             <TextBlock Style="{StaticResource TaglineText}" Text="Welcome to your Consultant_ATS dashboard" Margin="0,10,0,20"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="20">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button Style="{StaticResource ButtonStyle}" Content="Add Submission" Click="AddSubmissionButton_Click"/>
-                <Button Style="{StaticResource ButtonStyle}" Content="See All Submissions" Command="{Binding SeeAllSubmissionsCommand}"/>
-                <Button Style="{StaticResource ButtonStyle}" Content="Verify Vendor" Click="VerifyVendorButton_Click"/>
-                <Button Style="{StaticResource ButtonStyle}" Content="Update Submission Status" Click="UpdateSubmissionStatusButton_Click"/>
-                <Button Style="{StaticResource ButtonStyle}" Content="Logout" Click="LogoutButton_Click"/>
-               
-            </StackPanel>
+        <ScrollViewer Grid.Row="1" Padding="20">
+            <UniformGrid Columns="2" Rows="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!-- Add Submission -->
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <Image Source="add_icon.png" Width="50" Height="50" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Add New Submission" FontSize="20" FontWeight="Bold" Margin="10,0" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Submit a new job application." Margin="10,0" HorizontalAlignment="Center"/>
+                        <Button Style="{StaticResource ButtonStyle}" Content="Add Now" Click="AddSubmissionButton_Click"/>
+                    </StackPanel>
+                </Border>
+                <!-- See All Submissions -->
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <Image Source="list_icon.png" Width="50" Height="50" HorizontalAlignment="Center"/>
+                        <TextBlock Text="View All Submissions" FontSize="20" FontWeight="Bold" Margin="10,0" HorizontalAlignment="Center"/>
+                        <TextBlock Text="See all your job applications." Margin="10,0" HorizontalAlignment="Center"/>
+                        <Button Style="{StaticResource ButtonStyle}" Content="View Submissions" Command="{Binding SeeAllSubmissionsCommand}"/>
+                    </StackPanel>
+                </Border>
+                <!-- Verify Vendor -->
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <Image Source="verify_icon.png" Width="50" Height="50" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Verify Vendor" FontSize="20" FontWeight="Bold" Margin="10,0" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Confirm vendor details." Margin="10,0" HorizontalAlignment="Center"/>
+                        <Button Style="{StaticResource ButtonStyle}" Content="Verify Now" Click="VerifyVendorButton_Click"/>
+                    </StackPanel>
+                </Border>
+                <!-- Update Submission Status -->
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <Image Source="update_icon.png" Width="50" Height="50" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Update Status" FontSize="20" FontWeight="Bold" Margin="10,0" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Update your application status." Margin="10,0" HorizontalAlignment="Center"/>
+                        <Button Style="{StaticResource ButtonStyle}" Content="Update Now" Click="UpdateSubmissionStatusButton_Click"/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+        </ScrollViewer>
 
-            <ListView x:Name="SubmissionsListView" Width="800" Height="300" Margin="20,20,0,0" Visibility="Collapsed">
-                <!-- Define the ListView item template here -->
-            </ListView>
-        </StackPanel>
+        <Button Style="{StaticResource ButtonStyle}" Content="Logout" Click="LogoutButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="2" Margin="20"/>
     </Grid>
 </Window>

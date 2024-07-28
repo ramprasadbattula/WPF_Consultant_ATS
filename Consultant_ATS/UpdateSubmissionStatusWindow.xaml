@@ -1,86 +1,25 @@
 ﻿<Window x:Class="Consultant_ATS.UpdateSubmissionStatusWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Update Submission Status - Consultant_ATS" Height="450" Width="800">
-    <Window.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Roboto" />
-        </Style>
-
-        <Style x:Key="HeaderText" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="36" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="Foreground" Value="#333" />
-        </Style>
-
-        <Style x:Key="TaglineText" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontStyle" Value="Italic" />
-            <Setter Property="Foreground" Value="#666" />
-        </Style>
-
-        <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="100" />
-            <Setter Property="Height" Value="40" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="Background" Value="#6a11cb" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="BorderBrush" Value="Transparent" />
-            <Setter Property="Padding" Value="10,5" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                CornerRadius="20">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Effect">
-                <Setter.Value>
-                    <DropShadowEffect BlurRadius="10" ShadowDepth="5" Color="#00000020" />
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#2575fc" />
-                </Trigger>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="RenderTransform">
-                        <Setter.Value>
-                            <TranslateTransform Y="1" />
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
-
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                <GradientStop Color="#6a11cb" Offset="0" />
-                <GradientStop Color="#2575fc" Offset="1" />
-            </LinearGradientBrush>
-        </Grid.Background>
-
+        Title="Update Submission Status" Height="450" Width="800"
+        Background="#F5F5F5">
+    <Grid Background="#D9EAD3">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="10">
-            <TextBlock Style="{StaticResource HeaderText}" Text="Update Submission Status" />
-            <TextBlock Style="{StaticResource TaglineText}" Text="Update the status of a submission using the vendor email" Margin="0,10,0,20"/>
-        </StackPanel>
+        <!-- Header -->
+        <TextBlock Text="Update Submission Status"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Foreground="#333333"
+                   Background="#C8D6E5"
+                   Padding="10"
+                   Grid.Row="0"
+                   HorizontalAlignment="Center"/>
 
+        <!-- Content -->
         <StackPanel Grid.Row="1" Margin="20">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="Vendor Email:" FontSize="18" Margin="0,10,0,5"/>
@@ -89,7 +28,10 @@
                 <TextBlock Text="Status:" FontSize="18" Margin="0,10,0,5"/>
                 <TextBox x:Name="StatusTextBox" Width="300" Height="30" Margin="0,0,0,20" />
 
-                <Button Style="{StaticResource ButtonStyle}" Content="Update" Click="UpdateButton_Click"/>
+                <Button Content="Update" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"
+                        Background="#3498DB" Foreground="White" BorderBrush="Transparent"
+                        Width="100" Height="40" FontSize="16" FontWeight="Bold"
+                        Click="UpdateButton_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>
